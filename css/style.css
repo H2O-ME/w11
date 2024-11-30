@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: url('../assets/wallpapers/default.jpg') center/cover;
+}
+
+#desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 48px);
+    overflow: hidden;
+}
+
+#desktop-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.desktop-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.desktop-icon.selected {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.desktop-icon .icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+.desktop-icon .title {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    z-index: 1000;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+}
+
+#start-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#start-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#running-apps {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    margin: 0 8px;
+    gap: 4px;
+}
+
+.taskbar-item {
+    height: 40px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.taskbar-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.taskbar-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.taskbar-item.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#system-tray {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 8px;
+}
+
+.time {
+    font-size: 14px;
+    color: #000;
+}
+
+input, textarea {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+} 

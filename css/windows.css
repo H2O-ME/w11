@@ -1,0 +1,563 @@
+.window {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 300px;
+    min-height: 200px;
+}
+
+.window-titlebar {
+    height: 32px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    cursor: grab;
+    user-select: none;
+}
+
+.window-titlebar:active {
+    cursor: grabbing;
+}
+
+.window-content {
+    flex: 1;
+    background: #ffffff;
+    overflow: auto;
+    position: relative;
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.window-controls button {
+    width: 46px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+}
+
+.window-controls button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.window-controls .close:hover {
+    background: #ff0000;
+    color: white;
+}
+
+/* 任务栏样式优 */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    z-index: 10000;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#start-button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#start-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#running-apps {
+    display: flex;
+    flex: 1;
+    margin: 0 12px;
+    gap: 4px;
+}
+
+#system-tray {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px;
+}
+
+#system-tray .time {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.taskbar-item {
+    height: 40px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.taskbar-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.taskbar-item.minimized {
+    opacity: 0.7;
+}
+
+.taskbar-icon {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.taskbar-title {
+    font-size: 12px;
+}
+
+/* 活动窗口样式 */
+.window.active {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* 桌面图标样式 */
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.desktop-icon .icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 4px;
+}
+
+.desktop-icon .title {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* 窗口最大化状态 */
+.window.maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 48px) !important;
+    border-radius: 0;
+}
+
+/* 计算器应用样式 */
+.calculator {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #f0f0f0;
+    padding: 10px;
+}
+
+.calc-display {
+    font-size: 2em;
+    padding: 20px;
+    text-align: right;
+    background: white;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-buttons button {
+    padding: 15px;
+    font-size: 1.2em;
+    border: none;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calc-buttons button:hover {
+    background: #e0e0e0;
+}
+
+.calc-buttons button.wide {
+    grid-column: span 2;
+}
+
+/* 设置应用样式 */
+.settings-app {
+    display: flex;
+    height: 100%;
+}
+
+.settings-sidebar {
+    width: 200px;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.settings-item:hover {
+    background: #e0e0e0;
+}
+
+.settings-item.active {
+    background: #e0e0e0;
+}
+
+.settings-item .icon {
+    margin-right: 10px;
+}
+
+.settings-main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* 文件管理器样式 */
+.file-explorer {
+    display: flex;
+    height: 100%;
+}
+
+.file-sidebar {
+    width: 200px;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+.file-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-toolbar {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.address-bar {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    margin: 0 8px;
+}
+
+.address-bar .icon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.file-list {
+    flex: 1;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-item:hover {
+    background: #f0f0f0;
+}
+
+.file-item .icon {
+    margin-right: 8px;
+}
+
+.start-menu {
+    position: fixed;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    z-index: 9999;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.start-menu.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+}
+
+.search-bar {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    margin-left: 10px;
+    flex: 1;
+    font-size: 14px;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.app-item {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.app-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.recent-files {
+    margin: 10px 0;
+}
+
+.recent-item {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.recent-item:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.start-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-profile, .power-button {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.user-profile:hover, .power-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 桌面图标选中状态 */
+.desktop-icon.selected {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 任务栏项目样式 */
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 40px;
+    margin: 0 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.taskbar-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-item.minimized {
+    opacity: 0.7;
+}
+
+.taskbar-icon {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.taskbar-title {
+    font-size: 12px;
+}
+
+/* 活动窗口样式 */
+.window.active {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+#running-apps {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.context-menu {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    min-width: 220px;
+    z-index: 10000;
+    font-size: 14px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+}
+
+.menu-icon {
+    width: 20px;
+    margin-right: 8px;
+    text-align: center;
+}
+
+.menu-text {
+    flex: 1;
+}
+
+.shortcut {
+    color: #666;
+    font-size: 12px;
+    margin-left: 16px;
+}
+
+.menu-arrow {
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.menu-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.menu-separator {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 4px 0;
+}
+
+.context-submenu {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    min-width: 200px;
+    z-index: 10001;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item[data-action="new"]::after {
+    content: '▶';
+    position: absolute;
+    right: 8px;
+    font-size: 12px;
+}
+
+body {
+  background-image: url('https://img-blog.csdnimg.cn/20210617195058403.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N5eDU5NA==,size_16,color_FFFFFF,t_70');
+  background-size: cover; /* 覆盖整个视窗 */
+  background-position: center; /* 居中显示 */
+  background-repeat: no-repeat; /* 不重复平铺 */
+  background-attachment: fixed; /* 固定背景,不随滚动 */
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.file-item .icon {
+    margin-right: 8px;
+}
+
+.toolbar-btn {
+    padding: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.toolbar-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.toolbar-btn .icon {
+    width: 20px;
+    height: 20px;
+}
